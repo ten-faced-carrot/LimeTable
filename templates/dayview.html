@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LimeTable</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <a href="/vp/dashboard"><button>Zur Übersicht.</button></a>
+    
+    {% if not classid in data['classes'] %}
+        <li class="fa">
+            <h2>Keine Daten für Klasse "{{classid}}" vorhanden.</h2>
+        </li>
+    {% else %}
+        <ul>
+        {% for item in data['classes'][classid] %}
+            <li class="fa">
+                <h2>{{item['lesson']}}</h2>
+                {{item['subject']}}
+                {{item['teacher']}}
+                <sub>{{item['room']}}</sub>
+            </li>
+        {%endfor%}
+        <li class="fa">
+            {%for info in data['metadata']['info']%}
+                <p>{{info}}</p>
+            {%endfor%}
+        </li>
+    </ul>
+    {% endif %}
+</body>
+</html>

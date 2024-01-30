@@ -1,0 +1,43 @@
+metadata:
+  date: 2024-01-30
+  school: 000000
+  name: 2024-01-30
+  info: 
+    - Test-Zeile.
+    - Test-Zeile 2, mit mehr Text.
+    - Test-Zeile 3, mit noch mehr Text.
+
+classes:
+  5:
+    - lesson: 1
+      subject: Deutsch
+      teacher: sample
+      room: 001
+    
+    - lesson: 2
+      subject: Deutsch
+      teacher: sample
+      room: 001
+    
+    - lesson: 3
+      subject: Englisch
+      teacher: sample 2
+      room: 001
+    - lesson: 4
+      subject: Englisch
+      teacher: sample 2
+      room: 001
+
+    - lesson: 5
+      subject: Französisch
+      teacher: sample 3
+      room: 203
+    
+    - lesson: 6
+      subject: Sport
+      teacher: spole
+      room: H3
+    - lesson: 7
+      subject: Sport
+      teacher: spole
+      room: H3

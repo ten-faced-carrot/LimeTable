@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <script>
+        function openTimetable() {
+            var date = document.getElementById("date").value;
+            window.location.href = "/vp/day/" + date + "?cls=" + document.getElementById("cls").value;
+        }
+    </script>
+    <input type="date" id="date" name="date">
+    <input id="cls" placeholder="Klasse">
+
+    <button onclick="openTimetable()">Öffnen</button>
+    <a href="/vp/logout"><button>Abmelden</button></a>
+</body>
+</html>
