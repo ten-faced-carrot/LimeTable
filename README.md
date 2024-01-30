@@ -14,5 +14,5 @@ Timetable-Service, made in spite of [Indiware StundenPlan24](https://stundenplan
 ```sh
 git clone https://github.com/StupidJohanna/LimeTable
 cd LimeTable
-
+sh jumpstart.sh
 ```
