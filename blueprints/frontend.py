@@ -6,7 +6,6 @@ import core.cryptography as cg
 import yaml
 import dotenv
 
-dotenv.load_dotenv()
 
 view_plan = Blueprint('plan', __name__, template_folder='templates', url_prefix='/vp')
 
