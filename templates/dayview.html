@@ -17,18 +17,21 @@
     {% else %}
         <ul>
         {% for item in data['classes'][classid] %}
-            <li class="fa">
-                <h2>{{item['lesson']}}</h2>
+            <li class="fa w3-container">
+                <h2 class="w3-container w3-teal">{{item['lesson']}}</h2>
                 {{item['subject']}}
                 {{item['teacher']}}
                 <sub>{{item['room']}}</sub>
             </li>
         {%endfor%}
+        {% if data['metadata']['info'] %}
         <li class="fa">
             {%for info in data['metadata']['info']%}
                 <p>{{info}}</p>
             {%endfor%}
         </li>
+    {% endif %}
+
     </ul>
     {% endif %}
 </body>

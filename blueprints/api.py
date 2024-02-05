@@ -47,15 +47,15 @@ def plan_add():
         for key, value in d.items():
             index = int(key[0])
             name = key[1:]
-            cls[index-1]['lesson'] = index
+            cls[index]['lesson'] = index+1
             if name == "Fa":
-                cls[index-1]['subject'] = value
+                cls[index]['subject'] = value
             elif name == "Ra":
-                cls[index-1]['raum'] = value
+                cls[index]['room'] = value
             elif name == "Zi":
-                cls[index-1]['info'] = value
+                cls[index]['info'] = value
             elif name == "Le":
-                cls[index-1]['teacher'] = value
+                cls[index]['teacher'] = value
         data['classes'][cname] = cls
         yaml.safe_dump(data, open(os.path.join('data', session['scident'], f'{date.today().isoformat()}.yaml'), 'w+'))
         return redirect(url_for('plan.dashboard'))
