@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LimeTable | Backend</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <script>
+        let date = Date.now();
+        window.onload = () =>{
+
+            document.getElementById("date").innerText = `${Date(date)}`
+        }
+        document.getElementById("date-form").onsubmit(() => {
+            console.log(document.getElementById("new-date").value)
+            date = Date.parse(document.getElementById("new-date"))
+            document.getElementById("date").innerText = `${Date(date)}`
+        })
+    </script>
+    <p id="date" class="w3-large"></p>
+    <form action="/api/p-add" method="post">
+        <label for="new-date">Datum:</label>
+        <input id="new-date" name="date-for" type="date" required>
+        <input type="text" name="klasse" placeholder="Klasse" required>
+    <table border>
+        <thead>
+            <tr>
+                <td>Stunde</td>
+                <td>Fach</td>
+                <td>Raum</td>
+                <td>Lehrer*in</td>
+                <td>Zusatzinfo</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in range(7) %}
+            <tr>
+                <td>{{i+1}}</td>
+                <td><input name="{{i}}Fa"></td>
+                <td><input name="{{i}}Ra"></td>
+                <td><input name="{{i}}Le"></td>
+                <td><input name="{{i}}Zi"></td>
+            </tr>
+            {%endfor %}
+        </tbody>
+    </table>
+    <input type="submit">
+</form>
+</body>
+</html>

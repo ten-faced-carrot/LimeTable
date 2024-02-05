@@ -23,8 +23,21 @@ def schuelogin_post():
         session['password'] = request.form['password']
         session['scident'] = request.form['scident']
         return redirect(url_for('plan.dashboard'))
-    else:
-        abort(401)
+    abort(401)
+
+@view_plan.route("/lehrerlogin")
+def lelogin():
+    return render_template("schuelogin.html")
+
+@view_plan.route("/lehrerlogin", methods=['POST'])
+def lelogin_post():
+    flash("Validating...")
+    if cg.hash_password(request.form['password']) == yaml.safe_load(open(os.path.join("data", request.form['scident'], f'proto.yml')))['users'][request.form['username']]['password']:
+        session['user'] = request.form['username']
+        session['password'] = request.form['password']
+        session['scident'] = request.form['scident']
+        return redirect(url_for('plan.dashboard'))
+    abort(401)
 
 @view_plan.route("/day/<day>")
 def dayview(day):
@@ -38,7 +51,18 @@ def dayview(day):
 
 @view_plan.route("/dashboard")
 def dashboard():
-    return render_template("dashboard.html")
+    if 'user' in session:
+        if session['user'] == 'admin':
+            return render_template("panel.html")
+        return render_template("dashboard.html")
+
+@view_plan.route("/plan/edit")
+def pedit():
+    if 'user' in session:
+        if session['user'] == 'admin':
+            return render_template("editplan.html")
+        abort(401)
+
 
 @view_plan.route("/logout")
 def logout():

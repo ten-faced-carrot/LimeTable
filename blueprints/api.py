@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, abort, redirect, url_for, request, session, jsonify
 import os
-from datetime import datetime
+from datetime import datetime, date
 import yaml
 from core import cryptography as cg
 
@@ -25,6 +25,41 @@ def get_day(scident,day):
             abort(404)
         abort(401)
     abort(404)
+
+@planapi.route("/p-add", methods=['POST'])
+def plan_add():
+    if 'user' in session and session.get('user') == 'admin':
+        if os.path.exists(os.path.join('data', session['scident'], f'{date.today().isoformat()}.yaml')):
+            data = yaml.safe_load(open(os.path.join('data', session['scident'], f'{date.today().isoformat()}.yaml')))
+        else:
+            data = {
+                'metadata': {
+                    'school': session['scident'],
+                    'date': date.today().isoformat(),
+                    'name': date.today().isoformat(),
+                },
+                'classes': {}
+            }
+        d = request.form.to_dict()
+        cname = d.pop('klasse')
+        cls = [{} for i in range(7)]
+        data['metadata']['date'] = data['metadata']['name'] = d.pop('date-for')
+        for key, value in d.items():
+            index = int(key[0])
+            name = key[1:]
+            cls[index-1]['lesson'] = index
+            if name == "Fa":
+                cls[index-1]['subject'] = value
+            elif name == "Ra":
+                cls[index-1]['raum'] = value
+            elif name == "Zi":
+                cls[index-1]['info'] = value
+            elif name == "Le":
+                cls[index-1]['teacher'] = value
+        data['classes'][cname] = cls
+        yaml.safe_dump(data, open(os.path.join('data', session['scident'], f'{date.today().isoformat()}.yaml'), 'w+'))
+        return redirect(url_for('plan.dashboard'))
+    abort(401)
 
 @planapi.route("/day/<scident>/<day>", methods=['POST'])
 def post_day(scident,day):

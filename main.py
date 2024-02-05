@@ -14,6 +14,10 @@ def main():
 app.register_blueprint(api.planapi)
 app.register_blueprint(frontend.view_plan)
 
+@app.errorhandler(401)
+def unauthorized(e):
+    return redirect(url_for("plan.schuelogin"))
+
 if __name__ == "__main__":
     app.secret_key = os.urandom(12)
     app.run(debug=int(os.environ['DEBUG']), host=os.environ['HOST'], port=int(os.environ['PORT']))

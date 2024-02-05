@@ -1,7 +1,8 @@
 users:
   user:
     password: 96cae35ce8a9b0244178bf28e4966c2ce1b8385723a96a6b838858cdd6ca0a1e
-
+  admin:
+    password: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 school:
   name: Testschule
   contact: kontakt@example.de
