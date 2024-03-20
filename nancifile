@@ -10,7 +10,7 @@ project:
 
 
 pipelines:
-  - name: "build"
+  - name: "jumpstart"
     description: "Build environment"
 
     host: "http://localhost"
