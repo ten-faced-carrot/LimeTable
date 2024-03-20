@@ -15,9 +15,7 @@ project:
 pipelines:
   - name: "build"
     description: "Build environment"
-    docker:
-      image: "ubuntu"
-      name: "build_env"
+
     host: "http://localhost"
     port: 8080
     git: 
