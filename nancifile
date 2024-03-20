@@ -12,8 +12,6 @@ project:
 # You can override these values in the deployment file
 # or by using the command line options
 
-# The default deployment environment
-
 pipelines:
   - name: "build"
     description: "Build environment"
