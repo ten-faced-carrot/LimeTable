@@ -1,26 +1,14 @@
-# NanCI Deployment File
-#
+# Build File for NanCI ("nancifile")
 
-project: 
-  name: "LimeTable"
-  version: "1.0.0"
-  description: "Timetable Service :3"
-  developer: "StupidJohanna"
-  handle: "na.stupidjoha.limetable"
+kind: pipeline
+type: shell
 
+steps:
+  - name: build
+    commands:
+      - echo "Building the project"
+      - sh jumpstart.sh
+      - echo "Done building the project"
 
-pipelines:
-  - name: "jumpstart"
-    description: "Build environment"
-
-    host: "http://localhost"
-    port: 8080
-    git: 
-      branch: "master"
-    steps:
-      - name: "jumpstart"
-        description: "Jumpstarts the Service"
-        commands:
-          - "sh jumpstart.sh"
-    release:
-      enabled: false
+release:
+  enabled: false
