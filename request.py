@@ -1,3 +1,5 @@
+# Sample :3
+
 from core.cryptography import hash_password
 import requests
 from datetime import date
