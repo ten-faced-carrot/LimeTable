@@ -5,9 +5,7 @@ Timetable-Service, made in spite of [Indiware StundenPlan24](https://stundenplan
 ## Table of Contents
 
 - [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+
 
 ## Installation
 
