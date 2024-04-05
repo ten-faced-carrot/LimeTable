@@ -1,7 +1,6 @@
 # Build File for NanCI ("nancifile")
 # ne.stupidjoha.limetable
 
-kind: pipeline
 type: shell
 
 steps:
